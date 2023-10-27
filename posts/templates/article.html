@@ -1,0 +1,56 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="max-width-1 m-auto">
+  <hr />
+</div>
+<div class="post-img m-auto nav-left">
+  {% if post.header_image %}
+  <img
+    src="{{ post.header_image.url}}"
+    alt="image"
+    height="60%"
+    width="50%"
+    class="m-auto"
+  />
+  {% endif %}
+</div>
+<div class="m-auto blog-post-content max-width-2 m-auto my-2">
+  <h1 class="font1">{{ post.title }}</h1>
+  <div class="blogpost-meta">
+    <div class="author-info">
+      <div><b>{{post.author}}</b></div>
+      <div><b>{{ post.post_date }}</b></div>
+      <br />
+      <div>
+        <b
+          ><a href="{% url 'category' post.category %}" style="color: black"
+            >{{ post.category }}</a
+          ></b
+        >
+      </div>
+
+      {% if user.is_authenticated %} {% if user.id == post.author.id %}
+
+      <u
+        ><a href="{% url 'update_post' post.pk %}" style="color: black">
+          Edit post
+        </a></u
+      >
+      &nbsp; &nbsp;
+      <u
+        ><a href="{% url 'delete_post' post.pk %}" style="color: black">
+          Delete post
+        </a></u
+      >
+      {% endif %}
+
+      <br />
+      {% endif %}
+    </div>
+  </div>
+  <br />
+  <br />
+  <p class="font1">{{ post.body|safe }}</p>
+</div>
+
+{% endblock %}

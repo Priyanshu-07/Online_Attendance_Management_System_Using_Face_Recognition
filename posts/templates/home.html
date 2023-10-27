@@ -1,0 +1,74 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="m-auto content max-width-1 my-2">
+  <div class="content-left">
+    <h1>Education without application is just entertainment.</h1>
+    <p>
+      eClass is a website which lets user to enhance the experience of Online
+      Study. As a cherry on top, this eClass website contains an Image
+      Recognition system, for maintaining attendance file. It holds the
+      smoothness of HTML, CSS and the extreme power of Python's web framework
+      Django. Under the Umbrella of Deep Learning this is the best website in
+      town for handling the Online Classes senario. With a great smile on face,
+      I Priyanshu Verma and Mansi Kashyap, welcome you to our webiste, Online
+      Classes Management with Image Recognition System.
+    </p>
+  </div>
+  <div class="content-right">
+    <img src="static/images/image12.png" alt="e-Class" />
+  </div>
+</div>
+
+<div class="home-articles max-width-1 m-auto font2">
+  <h2>Study Material</h2>
+
+  <div class="year-box"></div>
+
+  <ul style="list-style: none">
+    {% for post in object_list %}
+    <li>
+      <div class="home-article">
+        <div class="home-article-img">
+          {% if post.header_image %}
+          <img
+            src="{{ post.header_image.url}}"
+            alt="image"
+            height="200"
+            width="200"
+          />
+          <br />
+          {% endif %}
+        </div>
+        <div class="home-article-content font1">
+          <a href="{%  url 'article' post.pk %}"><h3>{{ post.title }}</h3></a>
+          <div>{{post.author }}</div>
+          <span>{{ post.post_date }}</span>
+          <div>
+            <b
+              ><a href="{% url 'category' post.category %}" style="color: black"
+                >{{ post.category }}</a
+              ></b
+            >
+          </div>
+          <br />
+          <span class="nav-left">
+            {% if user.is_authenticated %} {% if user.id == post.author.id %}
+
+            <u><a href="{% url 'update_post' post.pk %}"> Edit post </a></u>
+            &nbsp; &nbsp;
+            <u><a href="{% url 'delete_post' post.pk %}"> Delete post </a></u>
+
+            {% endif %}
+
+            <br />
+            {% endif %}
+          </span>
+        </div>
+      </div>
+    </li>
+
+    {% endfor %}
+  </ul>
+
+  {% endblock %}
+</div>

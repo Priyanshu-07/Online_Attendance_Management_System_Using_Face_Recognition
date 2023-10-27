@@ -1,0 +1,45 @@
+{% extends 'base.html' %} 
+
+{% block content %} 
+
+{% if user.is_authenticated %}
+
+{% if user.id == post.author.id %}
+
+<div class=" navigation nav-left ">
+
+        
+  <h1 class=" font1 max-width-1 m-auto" > Edit Post </h1><br>
+  
+</div>
+<div class="form-group">
+
+  <div class="contact-content font1 max-width-1 m-auto">
+    <div class="max-width-1 m-auto mx-1"> 
+      <div  class = "contact-form">
+        <!-- <h1>ADD Posts -->
+          <br><br>
+        <div  class=" form-box  m-auto" >
+
+<form method="POST">
+  {% csrf_token %} 
+  {{ form.as_p }}
+
+  <button class="btn navigation max-width-1 m-auto ">Post</button>
+  
+</form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+{% else %} You are not allowed here 
+
+{% endif %}
+
+{% else %} You are not allowed here 
+
+{% endif %}
+
+{% endblock %}

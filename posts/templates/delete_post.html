@@ -1,0 +1,32 @@
+{% extends 'base.html' %} 
+
+{% block content %} 
+
+{% if user.is_authenticated %}
+
+{% if user.id == post.author.id %}
+
+<div class="form-group">
+
+    <div class=" navigation nav-left ">
+
+        
+        <h1 class=" font1 max-width-1 m-auto" >Delete:-  {{post.title}}</h1><br>
+        
+    </div>
+    <form method="POST"> 
+        {% csrf_token %}
+       <br><br>
+    <button class="btn navigation max-width-1 m-auto">Delete</button> <br><br>
+  
+
+</div>
+{% else %} You are not allowed here 
+
+{% endif %}
+
+{% else %} You are not allowed here 
+
+{% endif %}
+
+{% endblock %}

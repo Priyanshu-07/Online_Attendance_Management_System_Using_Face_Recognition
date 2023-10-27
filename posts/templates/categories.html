@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+ 
+{% block content %}
+
+
+{% if category_post %}
+
+<div class="home-articles max-width-1 m-auto font2">
+  <h2>{{ cats }}</h2>
+  
+  <div class="year-box">
+      
+</div>
+
+
+<ul style="list-style: none;">
+  {% for post in category_post %}
+  <li>
+    <div class="home-article">
+      <div class="home-article-img">
+        {% if post.header_image %}
+        <img src="{{ post.header_image.url}}" alt="image" height="200" width="200"> <br>
+        {% endif %}
+      </div>
+      <div class="home-article-content font1">
+          <a href="{%  url 'article' post.pk %}"><h3>{{ post.title }}</h3></a>
+          <div>{{post.author }}</div>
+          <Span>{{ post.post_date }}</Span>
+          <Span>{{ post.category }}</Span>
+          <br>
+          <Span class="nav-left">
+            {% if user.is_authenticated %} 
+  
+            {% if user.id == post.author.id %}
+          
+            <u><a href="{% url 'update_post' post.pk %}"> Edit post </a></u> &nbsp; &nbsp;
+            <u><a href="{% url 'delete_post' post.pk %}"> Delete post </a></u>
+          
+            {% endif %}
+
+            <br />
+            {% endif %}
+          </Span>
+      </div>
+    </div>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <h1>Page doesnt exist</h1>
+  {% endif %} 
+
+{% endblock %}
+
