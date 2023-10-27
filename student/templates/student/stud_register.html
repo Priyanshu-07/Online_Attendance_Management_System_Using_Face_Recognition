@@ -1,0 +1,51 @@
+{% extends 'base.html' %} 
+
+{% block title %} Student Register {% endblock %}
+
+
+{% block content %}
+<div class="navigation nav-left ">
+  <h1 class="m-auto "> Student Register </h1>
+</div>
+
+
+
+<div class="contact-content font1 max-width-1 m-auto">
+  <div class="max-width-1 m-auto mx-1"> 
+    <div  class = "contact-form">
+        <br><br>
+        <div  class=" form-box  m-auto " >
+          
+          <form method="POST" class="form-box m-auto" action="{% url 'stud_register' %}" enctype = "multipart/form-data">
+            {% csrf_token %} 
+            
+            <div class=" navigation nav-left  ">
+
+              <label for="roll_no" class="label ">Roll No.</label>
+              <input type="text" name="roll_no" class="input" placeholder="enter Roll No" autofocus required id="id_roll_no"> 
+            </div>
+            
+
+            <div class="navigation nav-left">
+
+              <label for="stud_image" class="label">Image</label>
+              <input type="file" name="stud_image" accept="image/*" required id="id_stud_image">
+            </div>
+            
+            
+            
+            <button class="btn navigation max-width-1 m-auto " type="submit">Login</button> <br>
+
+            </form>
+            
+          </div>
+          
+          
+          <div class="max-width-1 m-auto">
+            <hr>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+{% endblock content %}

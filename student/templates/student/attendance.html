@@ -1,0 +1,58 @@
+{% extends 'base.html' %} 
+
+{% block title %} Attendance {% endblock %}
+
+
+{% block content %}
+<div class="navigation nav-left ">
+  <h1 class="m-auto "> Student Attendance </h1>
+</div>
+
+
+
+<div class="contact-content font1 max-width-1 m-auto">
+  <div class="max-width-1 m-auto mx-1"> 
+    <div  class = "contact-form">
+        <br><br>
+        <div  class=" form-box  m-auto" >
+          
+          <form method="POST" class="form-box m-auto" action="{% url 'stud_attendance' %}" enctype = "multipart/form-data">
+            {% csrf_token %} 
+            
+            <div class=" navigation nav-left  ">
+              <ul>
+              <li><label for="roll_no" class="label ">Roll No.</label></li>
+              </ul>
+              <input type="text" name="roll_no" class="input" placeholder="enter Roll No" autofocus required id="id_roll_no"> 
+            </div>
+            
+
+            <div class="navigation nav-left">
+
+              <h3>Instructions </h3> <br>
+              <ol>
+                    <li>Use Space Bar to Capture image </li>
+                    <li> Use Esc to return/exit </li>
+                    <li> Please be on a well lighten place for better results</li>
+                    <li> Please remove and paintings (that signifies face) from background</li>
+
+              </ol>
+            </div><br><br><br>
+            
+            
+            
+            <button class="btn navigation max-width-1 m-auto " type="submit">Take Attendace</button> <br>
+
+            <u><a href="{% url 'stud_download'%}" class="btn">Download attendance file</a></u>
+
+            </form>
+            
+          </div>
+          <div class="max-width-1 m-auto">
+            <hr>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+{% endblock content %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %} 
+
+{% block content %} 
+
+
+<div class="form-group  m-auto">
+
+    <div class=" navigation  ">
+
+        
+        <h1 class=" font1 max-width-1 m-auto" > Download File </h1>
+        
+    </div>
+    <br><br>
+
+        <form method="POST" class="center form-box m-auto "> 
+            {% csrf_token %}
+            <h3><label for="roll_no" >Enter Roll no. </label></h3>
+            <input type="text" required name = "roll_no" >
+            <br><br>
+            <button class="btn navigation max-width-1 m-auto">Download</button> <br><br>
+        </form>
+
+    
+</div>
+
+
+{% endblock %}

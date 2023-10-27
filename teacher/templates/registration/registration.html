@@ -1,0 +1,81 @@
+{% extends 'base.html' %} 
+{% block title %} Register {% endblock %}
+
+{% block content %} 
+
+<div class="navigation nav-left ">
+  <h1 class="m-auto "> Register </h1>
+</div>
+
+
+
+ <div class="contact-content font1 max-width-1 m-auto">
+  <div class="max-width-1 m-auto mx-1"> 
+    <div  class = "contact-form">
+        <br><br>
+        <div  class=" form-box  m-auto" >
+          
+          <form method="POST" class="form-box m-auto" action="{% url 'teacher_register' %}">
+            {% csrf_token %} 
+            
+            <div class=" navigation nav-left  ">
+
+              <label for="" class="label ">Username </label>
+              <input type="text" name="username" class="input" placeholder="enter username" autofocus required id="id_username">
+              <!-- {{ form.username }} -->
+            </div>
+            
+            <div class=" navigation nav-left ">
+
+              <label for="first_name" class="label ">First name</label>
+              <input type="text" name="first_name" class="input" placeholder="enter first name" required id="id_first_name">
+              <!-- {{ form.first_name }} -->
+            </div>
+            
+            <div class="field navigation nav-left">
+
+              <label for="" class="label">Last name</label>
+              <input type="text" name="last_name" class="input" placeholder="enter last name" required id="id_last_name">
+              <!-- {{ form.last_name }} -->
+            </div>
+
+            <div class="navigation nav-left">
+
+              <label for="" class="label">Email</label>
+              <input type="email" name="email" class="input" placeholder="enter email" required id="id_email">
+              <!-- {{ form.email }} -->
+              
+            </div>
+
+            <div class="navigation nav-left">
+
+              <label for="" class="label">Password</label>
+              <input type="password" name="password1" class="input" placeholder="enter password" required id="id_password1">
+              <!-- {{ form.password1 }} -->
+
+            </div>
+
+            <div class="navigation nav-left">
+
+              <label for="" class="label">Confirm Password</label>
+              <input type="password" name="password2" class="input" placeholder="confirm password" required id="id_password2">
+              <!-- {{ form.password2 }} -->
+
+            </div>
+            
+            
+            <button class="btn navigation max-width-1 m-auto " type= "submit">Register</button> <br>
+            
+          </div>
+        </form>
+          
+          <div class="max-width-1 m-auto">
+            <hr>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+
+    
+    {% endblock content %}
